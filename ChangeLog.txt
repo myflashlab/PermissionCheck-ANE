@@ -1,0 +1,4 @@
+Permission Check Air Native Extension
+
+*Jun 08, 2016 - V1.0.0*
+* beginning of the journey!
