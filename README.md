@@ -79,7 +79,7 @@ Embedding the ANE:
 2. Air SDK 22 or higher
 
 # Commercial Version
-http://www.myflashlabs.com/product/native-access-permissions-settings-air-native-extension/
+http://www.myflashlabs.com/product/native-access-permission-check-settings-menu-air-native-extension/
 
 ![Permission Check ANE](http://www.myflashlabs.com/wp-content/uploads/2016/06/product_adobe-air-ane-permission-check-595x738.jpg)
 
