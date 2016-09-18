@@ -1,4 +1,7 @@
 Permission Check Air Native Extension
 
+*Sep 18, 2016 - V1.0.1*
+* Fixed iOS 7 hard crash
+
 *Jun 08, 2016 - V1.0.0*
 * beginning of the journey!

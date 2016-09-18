@@ -1,4 +1,4 @@
-# Permission Check ANE V1.0.0 for iOS
+# Permission Check ANE V1.0.1 for iOS
 with this ANE you can get the current permission status of different iOS sources like the camera, photos, contacts, calendar, reminders and mic. This ANE also allows you to request for a permission if its status is still unknown.
 
 # asdoc
@@ -87,5 +87,8 @@ http://www.myflashlabs.com/product/native-access-permission-check-settings-menu-
 [How to embed ANEs into **FlashBuilder**, **FlashCC** and **FlashDevelop**](https://www.youtube.com/watch?v=Oubsb_3F3ec&list=PL_mmSjScdnxnSDTMYb1iDX4LemhIJrt1O)  
 
 # Changelog
+*Sep 18, 2016 - V1.0.1*
+* Fixed iOS 7 hard crash
+
 *Jun 08, 2016 - V1.0.0*
 * beginning of the journey!
