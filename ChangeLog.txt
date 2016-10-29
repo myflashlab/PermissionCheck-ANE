@@ -1,5 +1,11 @@
 Permission Check Air Native Extension
 
+*Oct 29, 2016 - V2.0.0*
+* Added Android support
+* AIR 24+ is required to compile the ANE
+* Set -swf-version=35 in compiler options
+* Set ```android:targetSdkVersion``` to at least ``23``` in your AIR manifest file
+
 *Sep 18, 2016 - V1.0.1*
 * Fixed iOS 7 hard crash
 

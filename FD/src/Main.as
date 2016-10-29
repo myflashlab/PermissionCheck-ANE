@@ -31,7 +31,6 @@ package
 	import flash.net.URLRequestMethod;
 	import flash.net.URLVariables;
 	
-	
 	/**
 	 * ...
 	 * @author Hadi Tavakoli - 6/7/2016 4:38 PM
@@ -158,14 +157,12 @@ package
 				
 				C.log("");
 				
+				// ----------------------------------------------------------------------- on both platforms
 				permissionState = _ex.check(PermissionCheck.SOURCE_CAMERA);
 				C.log("PermissionCheck.SOURCE_CAMERA = " + prettify(permissionState));
 				
 				permissionState = _ex.check(PermissionCheck.SOURCE_MIC);
 				C.log("PermissionCheck.SOURCE_MIC = " + prettify(permissionState));
-				
-				permissionState = _ex.check(PermissionCheck.SOURCE_PHOTOS);
-				C.log("PermissionCheck.SOURCE_PHOTOS = " + prettify(permissionState));
 				
 				permissionState = _ex.check(PermissionCheck.SOURCE_CONTACTS);
 				C.log("PermissionCheck.SOURCE_CONTACTS = " + prettify(permissionState));
@@ -173,8 +170,34 @@ package
 				permissionState = _ex.check(PermissionCheck.SOURCE_CALENDAR);
 				C.log("PermissionCheck.SOURCE_CALENDAR = " + prettify(permissionState));
 				
-				permissionState = _ex.check(PermissionCheck.SOURCE_REMINDER);
-				C.log("PermissionCheck.SOURCE_REMINDER = " + prettify(permissionState));
+				// ----------------------------------------------------------------------- on iOS ONLY
+				if (_ex.os == PermissionCheck.IOS)
+				{
+					permissionState = _ex.check(PermissionCheck.SOURCE_PHOTOS);
+					C.log("PermissionCheck.SOURCE_PHOTOS = " + prettify(permissionState));
+					
+					permissionState = _ex.check(PermissionCheck.SOURCE_REMINDER);
+					C.log("PermissionCheck.SOURCE_REMINDER = " + prettify(permissionState));
+				}
+				
+				// ----------------------------------------------------------------------- on Android ONLY
+				if (_ex.os == PermissionCheck.ANDROID)
+				{
+					permissionState = _ex.check(PermissionCheck.SOURCE_PHONE);
+					C.log("PermissionCheck.SOURCE_PHONE = " + prettify(permissionState));
+					
+					permissionState = _ex.check(PermissionCheck.SOURCE_STORAGE);
+					C.log("PermissionCheck.SOURCE_STORAGE = " + prettify(permissionState));
+					
+					permissionState = _ex.check(PermissionCheck.SOURCE_LOCATION);
+					C.log("PermissionCheck.SOURCE_LOCATION = " + prettify(permissionState));
+					
+					permissionState = _ex.check(PermissionCheck.SOURCE_SENSORS);
+					C.log("PermissionCheck.SOURCE_SENSORS = " + prettify(permissionState));
+					
+					permissionState = _ex.check(PermissionCheck.SOURCE_SMS);
+					C.log("PermissionCheck.SOURCE_SMS = " + prettify(permissionState));
+				}
 				
 				C.log("");
 				C.log("----------------");
@@ -188,6 +211,8 @@ package
 			{
 				_ex.openSettings();
 			}
+			
+			// -------------------------------------------------------------------- on both platforms
 			
 			var btn1:MySprite = createBtn("request CAMERA");
 			btn1.addEventListener(MouseEvent.CLICK, requestCamera);
@@ -205,15 +230,6 @@ package
 			function requestMic(e:MouseEvent):void
 			{
 				_ex.request(PermissionCheck.SOURCE_MIC, onRequestResult);
-			}
-			
-			var btn3:MySprite = createBtn("request PHOTOS");
-			btn3.addEventListener(MouseEvent.CLICK, requestPHOTOS);
-			_list.add(btn3);
-			
-			function requestPHOTOS(e:MouseEvent):void
-			{
-				_ex.request(PermissionCheck.SOURCE_PHOTOS, onRequestResult);
 			}
 			
 			var btn4:MySprite = createBtn("request CONTACTS");
@@ -234,13 +250,75 @@ package
 				_ex.request(PermissionCheck.SOURCE_CALENDAR, onRequestResult);
 			}
 			
-			var btn6:MySprite = createBtn("request REMINDER");
-			btn6.addEventListener(MouseEvent.CLICK, requestREMINDER);
-			_list.add(btn6);
-			
-			function requestREMINDER(e:MouseEvent):void
+			// ----------------------------------------------------------------------- on iOS ONLY
+			if (_ex.os == PermissionCheck.IOS)
 			{
-				_ex.request(PermissionCheck.SOURCE_REMINDER, onRequestResult);
+				var btn3:MySprite = createBtn("request PHOTOS");
+				btn3.addEventListener(MouseEvent.CLICK, requestPHOTOS);
+				_list.add(btn3);
+				
+				function requestPHOTOS(e:MouseEvent):void
+				{
+					_ex.request(PermissionCheck.SOURCE_PHOTOS, onRequestResult);
+				}
+				
+				var btn6:MySprite = createBtn("request REMINDER");
+				btn6.addEventListener(MouseEvent.CLICK, requestREMINDER);
+				_list.add(btn6);
+				
+				function requestREMINDER(e:MouseEvent):void
+				{
+					_ex.request(PermissionCheck.SOURCE_REMINDER, onRequestResult);
+				}
+			}
+			
+			// ----------------------------------------------------------------------- on iOS ONLY
+			if (_ex.os == PermissionCheck.ANDROID)
+			{
+				var btn7:MySprite = createBtn("request PHONE");
+				btn7.addEventListener(MouseEvent.CLICK, requestPHONE);
+				_list.add(btn7);
+				
+				function requestPHONE(e:MouseEvent):void
+				{
+					_ex.request(PermissionCheck.SOURCE_PHONE, onRequestResult);
+				}
+				
+				var btn8:MySprite = createBtn("request STORAGE");
+				btn8.addEventListener(MouseEvent.CLICK, requestSTORAGE);
+				_list.add(btn8);
+				
+				function requestSTORAGE(e:MouseEvent):void
+				{
+					_ex.request(PermissionCheck.SOURCE_STORAGE, onRequestResult);
+				}
+				
+				var btn9:MySprite = createBtn("request LOCATION");
+				btn9.addEventListener(MouseEvent.CLICK, requestLOCATION);
+				_list.add(btn9);
+				
+				function requestLOCATION(e:MouseEvent):void
+				{
+					_ex.request(PermissionCheck.SOURCE_LOCATION, onRequestResult);
+				}
+				
+				var btn10:MySprite = createBtn("request SENSORS");
+				btn10.addEventListener(MouseEvent.CLICK, requestSENSORS);
+				_list.add(btn10);
+				
+				function requestSENSORS(e:MouseEvent):void
+				{
+					_ex.request(PermissionCheck.SOURCE_SENSORS, onRequestResult);
+				}
+				
+				var btn11:MySprite = createBtn("request SMS");
+				btn11.addEventListener(MouseEvent.CLICK, requestSMS);
+				_list.add(btn11);
+				
+				function requestSMS(e:MouseEvent):void
+				{
+					_ex.request(PermissionCheck.SOURCE_SMS, onRequestResult);
+				}
 			}
 		}
 		
@@ -268,6 +346,11 @@ package
 				case PermissionCheck.PERMISSION_GRANTED:
 					
 					str = "GRANTED";
+					
+					break;
+				case PermissionCheck.PERMISSION_OS_ERR:
+					
+					str = "Not available on this OS!";
 					
 					break;
 			}
