@@ -157,11 +157,12 @@ Embedding the ANE:
 # Commercial Version
 http://www.myflashlabs.com/product/native-access-permission-check-settings-menu-air-native-extension/
 
-![Permission Check ANE](http://www.myflashlabs.com/wp-content/uploads/2016/06/product_adobe-air-ane-permission-check-595x738.jpg)
+![Permission Check ANE](http://www.myflashlabs.com/wp-content/uploads/2016/06/product_adobe-air-ane-permission-check-2-595x738.jpg)
 
 # Tutorials
 [How to embed ANEs into **FlashBuilder**, **FlashCC** and **FlashDevelop**](https://www.youtube.com/watch?v=Oubsb_3F3ec&list=PL_mmSjScdnxnSDTMYb1iDX4LemhIJrt1O)  
-[Understanding How Permissions Work](http://www.myflashlabs.com/understanding-android-ios-permissions-in-adobe-air-apps/)
+[Understanding How Permissions Work before the release of AIR 24](http://www.myflashlabs.com/understanding-android-ios-permissions-in-adobe-air-apps/)
+[How to work with Permissions after the release of AIR SDK 24](http://www.myflashlabs.com/adobe-air-app-permissions-android-ios/)
 
 # Changelog
 *Oct 29, 2016 - V2.0.0*
