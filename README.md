@@ -129,7 +129,79 @@ FOR iOS:
 	</InfoAdditions>
 	
 	
+	<!--
+		A new feature for iOS 10 submissions requires you to add the 'purpose string' to your app 
+		when accessing a user's private data such as Camera or Photos. For information about providing 
+		keys in your app descriptor file, see https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html
+		
+		To save your time, we have added the required key/values below for your reference:
+		
+		NOTE: Add them only if you are using that feature in your app.
+	-->
 	
+	<!-- Camera -->
+	<key>NSCameraUsageDescription</key>
+	<string>My description about why I need this feature in my app</string>
+	
+	<!-- Mic -->
+	<key>NSMicrophoneUsageDescription</key>
+	<string>My description about why I need this feature in my app</string>
+	
+	<!-- Contacts -->
+	<key>NSContactsUsageDescription</key>
+	<string>My description about why I need this feature in my app</string>
+	
+	<!-- Calender -->
+	<key>NSCalendarsUsageDescription</key>
+	<string>My description about why I need this feature in my app</string>
+	
+	<!-- Photos -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>My description about why I need this feature in my app</string>
+	
+	<!-- Reminder -->
+	<key>NSRemindersUsageDescription</key>
+	<string>My description about why I need this feature in my app</string>
+	
+	<!-- Location -->
+	<key>NSLocationUsageDescription</key>
+	<string>My description about why I need this feature in my app</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>My description about why I need this feature in my app</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>My description about why I need this feature in my app</string>
+	
+	<!-- Motion -->
+	<key>NSMotionUsageDescription</key>
+	<string>My description about why I need this feature in my app</string>
+	
+	<!-- Siri (Coming Soon) -->
+	<!--<key>NSSiriUsageDescription</key>
+	<string>My description about why I need this feature in my app</string>-->
+	
+	<!-- Speech Recognition (Coming Soon) -->
+	<!--<key>NSSpeechRecognitionUsageDescription</key>
+	<string>My description about why I need this feature in my app</string>-->
+	
+	<!-- Home Kit (Coming Soon) -->
+	<!--<key>NSHomeKitUsageDescription</key>
+	<string>My description about why I need this feature in my app</string>-->
+	
+	<!-- Health Update (Coming Soon) -->
+	<!--<key>NSHealthUpdateUsageDescription</key>
+	<string>My description about why I need this feature in my app</string>-->
+	
+	<!-- Health Share (Coming Soon) -->
+	<!--<key>NSHealthShareUsageDescription</key>
+	<string>My description about why I need this feature in my app</string>-->
+	
+	<!-- Bluetooth (Coming Soon) -->
+	<!--<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>My description about why I need this feature in my app</string>-->
+	
+	<!-- Apple Music (Coming Soon) -->
+	<!--<key>NSAppleMusicUsageDescription</key>
+	<string>My description about why I need this feature in my app</string>-->
 	
 	
 	
