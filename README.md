@@ -111,10 +111,61 @@ FOR Android:
 <!--The new Permission thing on Android works ONLY if you are targetting Android SDK 23 or higher-->
 <uses-sdk android:targetSdkVersion="23"/>
 
+	<!--
+		Although Permissions are asked at runtime, you still need to mention them in your manifest.
+		
+		To save your time, we have orgenized the permissions groups. Add them only if you are using that 
+		feature in your app.
+	-->
+		
+	<!-- CALENDAR GROUP -->
+	<uses-permission android:name="android.permission.READ_CALENDAR" />
+	<uses-permission android:name="android.permission.WRITE_CALENDAR" />
+		
+	<!-- CAMERA GROUP -->
+	<uses-permission android:name="android.permission.CAMERA" />
+		
+	<!-- CONTACTS GROUP -->
+	<uses-permission android:name="android.permission.READ_CONTACTS" />
+	<uses-permission android:name="android.permission.WRITE_CONTACTS" />
+	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+		
+	<!-- LOCATION GROUP -->
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+		
+	<!-- MICROPHONE GROUP -->
+	<uses-permission android:name="android.permission.RECORD_AUDIO" />
+	
+	<!-- PHONE GROUP -->
+	<uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+	<uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+	<uses-permission android:name="android.permission.READ_CALL_LOG" />
+	<uses-permission android:name="android.permission.CALL_PHONE" />
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission android:name="android.permission.USE_SIP" />
+	<uses-permission android:name="com.android.voicemail.permission.ADD_VOICEMAIL" />
+		
+	<!-- SENSORS GROUP -->
+	<uses-permission android:name="android.permission.BODY_SENSORS" />
+		
+	<!-- SMS GROUP -->
+	<uses-permission android:name="android.permission.RECEIVE_MMS" />
+	<uses-permission android:name="android.permission.RECEIVE_WAP_PUSH" />
+	<uses-permission android:name="android.permission.READ_SMS" />
+	<uses-permission android:name="android.permission.RECEIVE_SMS" />
+	<uses-permission android:name="android.permission.SEND_SMS" />
+		
+	<!-- STORAGE GROUP -->
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 
 
 
+	
+	
+	
 
 
 <!--

@@ -12,6 +12,13 @@
 	
 	<!--The new Permission thing on Android works ONLY if you are targetting Android SDK 23 or higher-->
 	<uses-sdk android:targetSdkVersion="23"/>
+	
+	<!--
+		Although Permissions are asked at runtime, you still need to mention them in your manifest.
+		
+		To save your time, we have orgenized the permissions groups. Add them only if you are using that 
+		feature in your app.
+	-->
 		
 	<!-- CALENDAR GROUP -->
 	<uses-permission android:name="android.permission.READ_CALENDAR" />
