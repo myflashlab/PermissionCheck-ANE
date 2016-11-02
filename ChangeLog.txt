@@ -1,5 +1,8 @@
 Permission Check Air Native Extension
 
+*Nov 02, 2016 - V2.0.1*
+* Fixed a bug on Android when requesting for a permission in the project constructor function was returning a wrong value.
+
 *Oct 29, 2016 - V2.0.0*
 * Added Android support
 * AIR 24+ is required to compile the ANE
