@@ -1,5 +1,9 @@
 Permission Check Air Native Extension
 
+*Nov 03, 2016 - V2.0.2*
+* Fixed a bug on Android when requesting permissions quickly one after the other
+* Fixed a bug on Android when requesting for permission groups. In this fix, you can call any of the permissions in a group and a correct dialog will open
+
 *Nov 02, 2016 - V2.0.1*
 * Fixed a bug on Android when requesting for a permission in the project constructor function was returning a wrong value.
 
