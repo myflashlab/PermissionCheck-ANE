@@ -8,11 +8,11 @@
     <movie fps="30" />
     <movie width="480" />
     <movie height="762" />
-    <movie version="21" />
+    <movie version="23" />
     <movie minorVersion="0" />
     <movie platform="AIR Mobile" />
     <movie background="#FFFFFF" />
-    <movie preferredSDK="Flex 4.6.0, AIR 24.0;4.6.0, 24.0;" />
+    <movie preferredSDK="Flex 4.6.0, AIR 25.0 beta;4.6.0, 25.0;" />
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
@@ -43,7 +43,7 @@
     <option linkReport="" />
     <option loadExterns="" />
     <option staticLinkRSL="True" />
-    <option additional="-swf-version=35" />
+    <option additional="-swf-version=36" />
     <option compilerConstants="" />
     <option minorVersion="" />
   </build>
@@ -58,6 +58,7 @@
     <element path="lib\barcodeExtension.ane" />
     <element path="lib\googlePlayServices.ane" />
     <element path="lib\permissionCheck.ane" />
+    <element path="lib\ANE-inspector.ane" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

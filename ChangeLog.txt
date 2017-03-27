@@ -1,5 +1,8 @@
 Permission Check Air Native Extension
 
+*Mar 27, 2016 - V2.1.0*
+* Updated the ANE with the latest OverrideAir ANE. This dependency is required on iOS builds also.
+
 *Nov 03, 2016 - V2.0.2*
 * Fixed a bug on Android when requesting permissions quickly one after the other
 * Fixed a bug on Android when requesting for permission groups. In this fix, you can call any of the permissions in a group and a correct dialog will open

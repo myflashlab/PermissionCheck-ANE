@@ -1,4 +1,4 @@
-# Permission Check ANE V2.0.2 for iOS/Android
+# Permission Check ANE V2.1.0 for iOS/Android
 If you are here reading this, it's probably because of one of the following reasons. Or both?!
 
 1. You need to ask for a permission which is not provided in the AS3 API.
@@ -265,7 +265,7 @@ Embedding the ANE:
 	
 	<extensionID>com.myflashlab.air.extensions.permissionCheck</extensionID>
 	
-	<!-- The following dependency ANEs are only required when compiling for Android -->
+	<!-- download the dependency ANEs from https://github.com/myflashlab/common-dependencies-ANE -->
 	<extensionID>com.myflashlab.air.extensions.dependency.androidSupport</extensionID>
 	<extensionID>com.myflashlab.air.extensions.dependency.overrideAir</extensionID>
 	
@@ -288,6 +288,10 @@ http://www.myflashlabs.com/product/native-access-permission-check-settings-menu-
 [How to work with Permissions after the release of AIR SDK 24](http://www.myflashlabs.com/adobe-air-app-permissions-android-ios/)
 
 # Changelog
+*Mar 27, 2016 - V2.1.0*
+* Updated the ANE with the latest OverrideAir ANE. This dependency is required on iOS builds also.
+
+
 *Nov 03, 2016 - V2.0.2*
 * Fixed a bug on Android when requesting permissions quickly one after the other
 * Fixed a bug on Android when requesting for permission groups. In this fix, you can call any of the permissions in a group and a correct dialog will open
