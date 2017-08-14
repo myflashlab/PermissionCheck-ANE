@@ -1,4 +1,4 @@
-# Permission Check ANE V2.1.0 for iOS/Android
+# Permission Check ANE V2.2.0 for iOS/Android
 If you are here reading this, it's probably because of one of the following reasons. Or both?!
 
 1. You need to ask for a permission which is not provided in the AS3 API.
@@ -13,15 +13,18 @@ The PermissionCheck Air Native Extension will ask for permissions without you ha
 Here are the list o permissions that this ANE currently supports:
 
 **on iOS:**
+
 * CAMERA
 * MIC
 * CONTACTS
 * CALENDAR
 * PHOTOS
 * REMINDER
-* LOCATION *we support this permission in our [GPS ANE](https://github.com/myflashlab/GPS-ANE)*
+* LOCATION (when in app)
+* LOCATION (always)
 
 **on Android:**
+
 * CAMERA
 * MIC
 * CONTACTS
@@ -54,6 +57,8 @@ var permissionState:int = _ex.check(PermissionCheck.SOURCE_CAMERA);
 // PermissionCheck.SOURCE_CALENDAR > both platforms
 // PermissionCheck.SOURCE_PHOTOS > iOS ONLY
 // PermissionCheck.SOURCE_REMINDER > iOS ONLY
+// PermissionCheck.SOURCE_LOCATION_WHEN_IN_USE > iOS ONLY
+// PermissionCheck.SOURCE_LOCATION_ALWAYS > iOS ONLY
 // PermissionCheck.SOURCE_PHONE > Android ONLY
 // PermissionCheck.SOURCE_STORAGE > Android ONLY
 // PermissionCheck.SOURCE_LOCATION > Android ONLY
@@ -211,12 +216,12 @@ FOR iOS:
 		<key>NSRemindersUsageDescription</key>
 		<string>My description about why I need this feature in my app</string>
 		
-		<!-- Location -->
-		<key>NSLocationUsageDescription</key>
-		<string>My description about why I need this feature in my app</string>
-		<key>NSLocationAlwaysUsageDescription</key>
-		<string>My description about why I need this feature in my app</string>
+		<!-- Location when in use -->
 		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>My description about why I need this feature in my app</string>
+		
+		<!-- Location always -->
+		<key>NSLocationAlwaysUsageDescription</key>
 		<string>My description about why I need this feature in my app</string>
 		
 		<!-- Motion -->
@@ -285,6 +290,10 @@ http://www.myflashlabs.com/product/native-access-permission-check-settings-menu-
 [How to work with Permissions after the release of AIR SDK 24](http://www.myflashlabs.com/adobe-air-app-permissions-android-ios/)
 
 # Changelog
+*Aug 14, 2017 - V2.2.0*
+* ```SOURCE_LOCATION_WHEN_IN_USE``` and ```SOURCE_LOCATION_ALWAYS``` for iOS are now also supported by the ANE. Do not confuse them with ```SOURCE_LOCATION``` which works on Android only.
+* Sample intelliJ project added to GitHub.
+
 *Mar 27, 2016 - V2.1.0*
 * Updated the ANE with the latest OverrideAir ANE. This dependency is required on iOS builds also.
 

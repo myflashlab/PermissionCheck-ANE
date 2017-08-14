@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <application xmlns="http://ns.adobe.com/air/application/25.0">
   <id>com.doitflash.permissionCheck</id>
-  <versionNumber>2.1.0</versionNumber>
+  <versionNumber>2.2.0</versionNumber>
   <supportedProfiles>mobileDevice</supportedProfiles>
   <filename>expermissionCheck</filename>
   <name>Permission Checker</name>
@@ -138,6 +138,14 @@
 		<!-- Reminder -->
 		<key>NSRemindersUsageDescription</key>
 		<string>My description about why I need this feature in my app</string>
+
+		<!-- Location when in use -->
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>My description about why I need location access when app is in use</string>
+
+		<!-- Location always -->
+		<key>NSLocationAlwaysUsageDescription</key>
+		<string>My description about why I need location access always</string>
 		
 	]]></InfoAdditions>
     <requestedDisplayResolution>high</requestedDisplayResolution>
