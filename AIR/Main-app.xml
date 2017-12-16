@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<application xmlns="http://ns.adobe.com/air/application/26.0">
+<application xmlns="http://ns.adobe.com/air/application/27.0">
     <id>com.doitflash.permissionCheck</id>
-    <versionNumber>2.2.0</versionNumber>
+    <versionNumber>2.2.2</versionNumber>
     <supportedProfiles>mobileDevice</supportedProfiles>
     <filename>expermissionCheck</filename>
     <name>Permission Checker</name>
@@ -196,8 +196,6 @@
     <!-- download the dependency ANEs from https://github.com/myflashlab/common-dependencies-ANE -->
     <extensionID>com.myflashlab.air.extensions.dependency.androidSupport</extensionID>
     <extensionID>com.myflashlab.air.extensions.dependency.overrideAir</extensionID>
-    
-    <!--<extensionID>com.myflashlab.air.extensions.inspector</extensionID>-->
-    
+        
 </extensions>
 </application>

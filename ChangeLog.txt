@@ -1,5 +1,8 @@
 Permission Check Air Native Extension
 
+*Dec 15, 2017 - V2.2.2*
+* Optimized for [ANE-LAB software](https://github.com/myflashlab/ANE-LAB).
+
 *Aug 14, 2017 - V2.2.0*
 * ```SOURCE_LOCATION_WHEN_IN_USE``` and ```SOURCE_LOCATION_ALWAYS``` for iOS are now also supported by the ANE. Do not confuse them with ```SOURCE_LOCATION``` which works on Android only.
 * Sample intelliJ project added to GitHub.

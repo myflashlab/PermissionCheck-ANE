@@ -1,4 +1,4 @@
-# Permission Check ANE V2.2.0 for iOS/Android
+# Permission Check ANE V2.2.2 for iOS/Android
 If you are here reading this, it's probably because of one of the following reasons. Or both?!
 
 1. You need to ask for a permission which is not provided in the AS3 API.
@@ -39,8 +39,7 @@ Here are the list o permissions that this ANE currently supports:
 # asdoc
 [find the latest asdoc for this ANE here.](http://myflashlab.github.io/asdoc/com/myflashlab/air/extensions/nativePermissions/package-detail.html)  
 
-**NOTICE**: the demo ANE works only after you hit the "OK" button in the dialog which opens. in your tests make sure that you are NOT calling other ANE methods prior to hitting the "OK" button.
-[Download the ANE](https://github.com/myflashlab/PermissionCheck-ANE/tree/master/FD/lib)
+[Download demo ANE](https://github.com/myflashlab/PermissionCheck-ANE/tree/master/AIR/lib)
 
 # Air Usage
 ```actionscript
@@ -290,6 +289,9 @@ http://www.myflashlabs.com/product/native-access-permission-check-settings-menu-
 [How to work with Permissions after the release of AIR SDK 24](http://www.myflashlabs.com/adobe-air-app-permissions-android-ios/)
 
 # Changelog
+*Dec 15, 2017 - V2.2.2*
+* Optimized for [ANE-LAB software](https://github.com/myflashlab/ANE-LAB).
+
 *Aug 14, 2017 - V2.2.0*
 * ```SOURCE_LOCATION_WHEN_IN_USE``` and ```SOURCE_LOCATION_ALWAYS``` for iOS are now also supported by the ANE. Do not confuse them with ```SOURCE_LOCATION``` which works on Android only.
 * Sample intelliJ project added to GitHub.
