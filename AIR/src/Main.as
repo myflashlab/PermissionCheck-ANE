@@ -27,9 +27,7 @@ package
 	import flash.ui.MultitouchInputMode;
 	
 	import com.myflashlab.air.extensions.nativePermissions.PermissionCheck;
-	
-	import flash.net.URLRequestMethod;
-	import flash.net.URLVariables;
+	import com.myflashlab.air.extensions.dependency.OverrideAir;
 	
 	/**
 	 * ...
@@ -141,11 +139,18 @@ package
 			}
 		}
 		
-		private var _ex:PermissionCheck;
+		private function myDebuggerDelegate($ane:String, $class:String, $msg:String):void
+		{
+			trace($ane+"("+$class+") "+$msg);
+		}
+		
 		private function onInit():void
 		{
-			_ex = new PermissionCheck();
+			// remove this line in production build or pass null as the delegate
+			OverrideAir.enableDebugger(myDebuggerDelegate);
 			
+			// initialize the ANE
+			PermissionCheck.init();
 			
 			var btn0:MySprite = createBtn("check permissions", 0xFF9900);
 			btn0.addEventListener(MouseEvent.CLICK, checkPermissions);
@@ -158,50 +163,50 @@ package
 				C.log("");
 				
 				// ----------------------------------------------------------------------- on both platforms
-				permissionState = _ex.check(PermissionCheck.SOURCE_CAMERA);
+				permissionState = PermissionCheck.check(PermissionCheck.SOURCE_CAMERA);
 				C.log("PermissionCheck.SOURCE_CAMERA = " + prettify(permissionState));
 				
-				permissionState = _ex.check(PermissionCheck.SOURCE_MIC);
+				permissionState = PermissionCheck.check(PermissionCheck.SOURCE_MIC);
 				C.log("PermissionCheck.SOURCE_MIC = " + prettify(permissionState));
 				
-				permissionState = _ex.check(PermissionCheck.SOURCE_CONTACTS);
+				permissionState = PermissionCheck.check(PermissionCheck.SOURCE_CONTACTS);
 				C.log("PermissionCheck.SOURCE_CONTACTS = " + prettify(permissionState));
 				
-				permissionState = _ex.check(PermissionCheck.SOURCE_CALENDAR);
+				permissionState = PermissionCheck.check(PermissionCheck.SOURCE_CALENDAR);
 				C.log("PermissionCheck.SOURCE_CALENDAR = " + prettify(permissionState));
 				
 				// ----------------------------------------------------------------------- on iOS ONLY
-				if (_ex.os == PermissionCheck.IOS)
+				if (PermissionCheck.os == PermissionCheck.IOS)
 				{
-					permissionState = _ex.check(PermissionCheck.SOURCE_PHOTOS);
+					permissionState = PermissionCheck.check(PermissionCheck.SOURCE_PHOTOS);
 					C.log("PermissionCheck.SOURCE_PHOTOS = " + prettify(permissionState));
 					
-					permissionState = _ex.check(PermissionCheck.SOURCE_REMINDER);
+					permissionState = PermissionCheck.check(PermissionCheck.SOURCE_REMINDER);
 					C.log("PermissionCheck.SOURCE_REMINDER = " + prettify(permissionState));
 					
-					permissionState = _ex.check(PermissionCheck.SOURCE_LOCATION_ALWAYS);
+					permissionState = PermissionCheck.check(PermissionCheck.SOURCE_LOCATION_ALWAYS);
 					C.log("PermissionCheck.SOURCE_LOCATION_ALWAYS = " + prettify(permissionState));
 					
-					permissionState = _ex.check(PermissionCheck.SOURCE_LOCATION_WHEN_IN_USE);
+					permissionState = PermissionCheck.check(PermissionCheck.SOURCE_LOCATION_WHEN_IN_USE);
 					C.log("PermissionCheck.SOURCE_LOCATION_WHEN_IN_USE = " + prettify(permissionState));
 				}
 				
 				// ----------------------------------------------------------------------- on Android ONLY
-				if (_ex.os == PermissionCheck.ANDROID)
+				if (PermissionCheck.os == PermissionCheck.ANDROID)
 				{
-					permissionState = _ex.check(PermissionCheck.SOURCE_PHONE);
+					permissionState = PermissionCheck.check(PermissionCheck.SOURCE_PHONE);
 					C.log("PermissionCheck.SOURCE_PHONE = " + prettify(permissionState));
 					
-					permissionState = _ex.check(PermissionCheck.SOURCE_STORAGE);
+					permissionState = PermissionCheck.check(PermissionCheck.SOURCE_STORAGE);
 					C.log("PermissionCheck.SOURCE_STORAGE = " + prettify(permissionState));
 					
-					permissionState = _ex.check(PermissionCheck.SOURCE_LOCATION);
+					permissionState = PermissionCheck.check(PermissionCheck.SOURCE_LOCATION);
 					C.log("PermissionCheck.SOURCE_LOCATION = " + prettify(permissionState));
 					
-					permissionState = _ex.check(PermissionCheck.SOURCE_SENSORS);
+					permissionState = PermissionCheck.check(PermissionCheck.SOURCE_SENSORS);
 					C.log("PermissionCheck.SOURCE_SENSORS = " + prettify(permissionState));
 					
-					permissionState = _ex.check(PermissionCheck.SOURCE_SMS);
+					permissionState = PermissionCheck.check(PermissionCheck.SOURCE_SMS);
 					C.log("PermissionCheck.SOURCE_SMS = " + prettify(permissionState));
 				}
 				
@@ -215,7 +220,7 @@ package
 			
 			function openSettings(e:MouseEvent):void
 			{
-				_ex.openSettings();
+				PermissionCheck.openSettings();
 			}
 			
 			// -------------------------------------------------------------------- on both platforms
@@ -226,7 +231,7 @@ package
 			
 			function requestCamera(e:MouseEvent):void
 			{
-				_ex.request(PermissionCheck.SOURCE_CAMERA, onRequestResult);
+				PermissionCheck.request(PermissionCheck.SOURCE_CAMERA, onRequestResult);
 			}
 			
 			var btn2:MySprite = createBtn("request MIC");
@@ -235,7 +240,7 @@ package
 			
 			function requestMic(e:MouseEvent):void
 			{
-				_ex.request(PermissionCheck.SOURCE_MIC, onRequestResult);
+				PermissionCheck.request(PermissionCheck.SOURCE_MIC, onRequestResult);
 			}
 			
 			var btn4:MySprite = createBtn("request CONTACTS");
@@ -244,7 +249,7 @@ package
 			
 			function requestCONTACTS(e:MouseEvent):void
 			{
-				_ex.request(PermissionCheck.SOURCE_CONTACTS, onRequestResult);
+				PermissionCheck.request(PermissionCheck.SOURCE_CONTACTS, onRequestResult);
 			}
 			
 			var btn5:MySprite = createBtn("request CALENDAR");
@@ -253,11 +258,11 @@ package
 			
 			function requestCALENDAR(e:MouseEvent):void
 			{
-				_ex.request(PermissionCheck.SOURCE_CALENDAR, onRequestResult);
+				PermissionCheck.request(PermissionCheck.SOURCE_CALENDAR, onRequestResult);
 			}
 			
 			// ----------------------------------------------------------------------- on iOS ONLY
-			if (_ex.os == PermissionCheck.IOS)
+			if (PermissionCheck.os == PermissionCheck.IOS)
 			{
 				var btn3:MySprite = createBtn("request PHOTOS");
 				btn3.addEventListener(MouseEvent.CLICK, requestPHOTOS);
@@ -265,7 +270,7 @@ package
 				
 				function requestPHOTOS(e:MouseEvent):void
 				{
-					_ex.request(PermissionCheck.SOURCE_PHOTOS, onRequestResult);
+					PermissionCheck.request(PermissionCheck.SOURCE_PHOTOS, onRequestResult);
 				}
 				
 				var btn6:MySprite = createBtn("request REMINDER");
@@ -274,7 +279,7 @@ package
 				
 				function requestREMINDER(e:MouseEvent):void
 				{
-					_ex.request(PermissionCheck.SOURCE_REMINDER, onRequestResult);
+					PermissionCheck.request(PermissionCheck.SOURCE_REMINDER, onRequestResult);
 				}
 				
 				var btn20:MySprite = createBtn("request LOCATION when in use");
@@ -283,7 +288,7 @@ package
 				
 				function requestLocationWhenInUse(e:MouseEvent):void
 				{
-					_ex.request(PermissionCheck.SOURCE_LOCATION_WHEN_IN_USE, onRequestResult);
+					PermissionCheck.request(PermissionCheck.SOURCE_LOCATION_WHEN_IN_USE, onRequestResult);
 				}
 				
 				var btn21:MySprite = createBtn("request LOCATION always access");
@@ -292,12 +297,12 @@ package
 				
 				function requestLocationAlways(e:MouseEvent):void
 				{
-					_ex.request(PermissionCheck.SOURCE_LOCATION_ALWAYS, onRequestResult);
+					PermissionCheck.request(PermissionCheck.SOURCE_LOCATION_ALWAYS, onRequestResult);
 				}
 			}
 			
 			// ----------------------------------------------------------------------- on Android ONLY
-			if (_ex.os == PermissionCheck.ANDROID)
+			if (PermissionCheck.os == PermissionCheck.ANDROID)
 			{
 				var btn7:MySprite = createBtn("request PHONE");
 				btn7.addEventListener(MouseEvent.CLICK, requestPHONE);
@@ -305,7 +310,7 @@ package
 				
 				function requestPHONE(e:MouseEvent):void
 				{
-					_ex.request(PermissionCheck.SOURCE_PHONE, onRequestResult);
+					PermissionCheck.request(PermissionCheck.SOURCE_PHONE, onRequestResult);
 				}
 				
 				var btn8:MySprite = createBtn("request STORAGE");
@@ -314,7 +319,7 @@ package
 				
 				function requestSTORAGE(e:MouseEvent):void
 				{
-					_ex.request(PermissionCheck.SOURCE_STORAGE, onRequestResult);
+					PermissionCheck.request(PermissionCheck.SOURCE_STORAGE, onRequestResult);
 				}
 				
 				var btn9:MySprite = createBtn("request LOCATION");
@@ -323,7 +328,7 @@ package
 				
 				function requestLOCATION(e:MouseEvent):void
 				{
-					_ex.request(PermissionCheck.SOURCE_LOCATION, onRequestResult);
+					PermissionCheck.request(PermissionCheck.SOURCE_LOCATION, onRequestResult);
 				}
 				
 				var btn10:MySprite = createBtn("request SENSORS");
@@ -332,7 +337,7 @@ package
 				
 				function requestSENSORS(e:MouseEvent):void
 				{
-					_ex.request(PermissionCheck.SOURCE_SENSORS, onRequestResult);
+					PermissionCheck.request(PermissionCheck.SOURCE_SENSORS, onRequestResult);
 				}
 				
 				var btn11:MySprite = createBtn("request SMS");
@@ -341,14 +346,44 @@ package
 				
 				function requestSMS(e:MouseEvent):void
 				{
-					_ex.request(PermissionCheck.SOURCE_SMS, onRequestResult);
+					PermissionCheck.request(PermissionCheck.SOURCE_SMS, onRequestResult);
+				}
+				
+				var btn12:MySprite = createBtn("request ALL");
+				btn12.addEventListener(MouseEvent.CLICK, requestALL);
+				_list.add(btn12);
+				
+				function requestALL(e:MouseEvent):void
+				{
+					PermissionCheck.requestMulti(
+							[
+								PermissionCheck.SOURCE_CAMERA,
+								PermissionCheck.SOURCE_MIC,
+								PermissionCheck.SOURCE_CONTACTS,
+								PermissionCheck.SOURCE_CALENDAR,
+								PermissionCheck.SOURCE_PHONE,
+								PermissionCheck.SOURCE_LOCATION,
+								PermissionCheck.SOURCE_STORAGE,
+								PermissionCheck.SOURCE_SENSORS,
+								PermissionCheck.SOURCE_SMS
+							],
+							onRequestMultiResult
+					);
 				}
 			}
 		}
 		
-		private function onRequestResult($state:int):void
+		private function onRequestResult($obj:Object):void
 		{
-			C.log("permission result = " + prettify($state));
+			C.log("permission for " + $obj.source + ": " + prettify($obj.state));
+		}
+		
+		private function onRequestMultiResult($arr:Array):void
+		{
+			for(var i:int=0; i < $arr.length; i++)
+			{
+				C.log("permission for " + $arr[i].source + ": " + prettify($arr[i].state))
+			}
 		}
 		
 		private function prettify($state:int):String
@@ -374,7 +409,7 @@ package
 					break;
 				case PermissionCheck.PERMISSION_OS_ERR:
 					
-					str = "Not available on this OS!";
+					str = "Not available!";
 					
 					break;
 			}

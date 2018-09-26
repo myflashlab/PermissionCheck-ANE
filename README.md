@@ -1,16 +1,9 @@
-# Permission Check ANE V2.2.2 for iOS/Android
-If you are here reading this, it's probably because of one of the following reasons. Or both?!
-
-1. You need to ask for a permission which is not provided in the AS3 API.
-2. You need to ask for a permission without having to initialize the AS3 built in APIs like the Camera API.
-
-with this ANE you can get the current permission status of different iOS/Android sources like the camera, photos, contacts, calendar, reminders, location, mic and etc. This ANE also allows you to request for a permission if its status is still unknown (on iOS) or denied (on Android).
-
-The PermissionCheck Air Native Extension will ask for permissions without you having to actually use the target APIs! For example, you can ask for users permission to have access to their Contacts information without even you actually initialize any API related to contacts.
+# Permission Check ANE V3.0.0 for iOS/Android
+This AIR Native Extensions lets you check the permission status of different iOS/Android sources like the camera, photos, contacts, calendar, reminders, location, mic and etc. This ANE also allows you to request for a permission if its status is still unknown (on iOS) or denied (on Android).
 
 **NOTE:** If you need other permissions, just leave us a message in the issues section and we will gladly add it to the currently supported permissions.
 
-Here are the list o permissions that this ANE currently supports:
+Here are the list of permissions that this ANE currently supports:
 
 **on iOS:**
 
@@ -46,10 +39,10 @@ Here are the list o permissions that this ANE currently supports:
 import com.myflashlab.air.extensions.nativePermissions.PermissionCheck;
 
 // initialize the ane
-var _ex:PermissionCheck = new PermissionCheck();
+PermissionCheck.init();
 
 // check for a permission state
-var permissionState:int = _ex.check(PermissionCheck.SOURCE_CAMERA);
+var permissionState:int = PermissionCheck.check(PermissionCheck.SOURCE_CAMERA);
 // PermissionCheck.SOURCE_CAMERA > both platforms
 // PermissionCheck.SOURCE_MIC > both platforms
 // PermissionCheck.SOURCE_CONTACTS > both platforms
@@ -72,37 +65,41 @@ var permissionState:int = _ex.check(PermissionCheck.SOURCE_CAMERA);
 */
 
 // if the state is PERMISSION_UNKNOWN on iOS or PERMISSION_DENIED on Android, you can request for a permission like this:
-_ex.request(PermissionCheck.SOURCE_CAMERA, onRequestResult);
+PermissionCheck.request(PermissionCheck.SOURCE_CAMERA, onRequestResult);
 
-private function onRequestResult($state:int):void
+private function onRequestResult($obj:Object):void
 {
-	trace("permission result = " + $state);
+	trace("permission for " + $obj.source + ": " + $obj.state);
 }
 
 /*
 	ON iOS:
-	When you request for a permission which is currently in UNKNOWN state, a dialog window will open and asks for
-	user's permission if the app should have access to the requested resource. No matter what the decision of the user
-	would be, you will never again be able to request for that permission again! Don't ask me why, it's how iOS works :)
+	When you request for a permission which is currently in UNKNOWN 
+	state, a dialog window will open and asks for user's permission 
+	if the app should have access to the requested resource. No matter 
+	what the decision of the user would be, you will never again be 
+	able to request for that permission again! Don't ask me why, it's 
+	how iOS works :)
 	
-	So, What would happen if a user has denied a request but later she changes her mind? well, in that case, you should
-	take the user to the app's settings menu using _ex.openSettings(); where user can see the list of permissions she
-	has granted to your app.
+	So, What would happen if a user has denied a request but later she 
+	changes her mind? well, in that case, you should take the user to 
+	the app's settings menu using ```PermissionCheck.openSettings();``` 
+	where user can see the list of permissions she has granted to your 
+	app.
 	
-	NOTICE: as soon as a user changes the state of a permission in the settings menu, your app will be shut down by OS.
-	Well, again, don't ask me why, it's how iOS works :)
+	NOTICE: as soon as a user changes the state of a permission in the 
+	settings menu, your app will be shut down by OS.
 	
-	-------------------------------------------------------------------------------------------------------------------
+	--------------------------------------------------------------------
 	
 	ON ANDROID:
-	As long as a feature permission is in DENIED state, you can request for user's permission and a dialog will open by
-	the ANE. Even the first time that you are asking for a permission, the state is DENIED.
+	As long as a feature permission is in DENIED state, you can request 
+	for user's permission and a dialog will open by the ANE. Even the 
+	first time that you are asking for a permission, the state is DENIED.
 	
-	Optionally, you can call _ex.openSettings(); to open the app settings window so users can see the list of features
-	that your app has requested permissions for.
-	
-	If you wish not to use the new Permission thing on Android, compile your project with AIR SDKs lower than 24 and also
-	make sure you are setting the android:targetSdkVersion to lower than 23.
+	Optionally, you can call ```PermissionCheck.openSettings();``` to open 
+	the app settings window so users can see the list of features that 
+	your app has requested permissions for.
 */
 ```
 
@@ -112,8 +109,7 @@ private function onRequestResult($state:int):void
 FOR Android:
 -->
 
-<!--The new Permission thing on Android works ONLY if you are targetting Android SDK 23 or higher-->
-<uses-sdk android:targetSdkVersion="23"/>
+<uses-sdk android:targetSdkVersion="26"/>
 
 	<!--
 		Although Permissions are asked at runtime, you still need to mention them in your manifest.
@@ -182,13 +178,17 @@ FOR iOS:
 		<string>8.0</string>
 		
 		<!--
-			A new feature for iOS 10 submissions requires you to add the 'purpose string' to your app 
-			when accessing a user's private data such as Camera or Photos. For information about providing 
-			keys in your app descriptor file, see https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html
+			In iOS 10+ submissions require you to add the 'purpose string' to your app 
+			when accessing a user's private data such as Camera or Photos. For information 
+			about providing keys in your app descriptor file, see https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html
 			
 			To save your time, we have added the required key/values below for your reference:
 			
-			NOTE: Add them only if you are using that feature in your app.
+			NOTE: Add them ALL even if you are not using that feature in your app. iOS review
+			process will notice that the native code is there and if you're not specifying the
+			<key> purpose in your manifest, they will reject your app. I know, seems silly but
+			that's how it works for now with iOS submissions. If in future, things are changed,
+			we will update you.
 		-->
 		
 		<!-- Camera -->
@@ -221,6 +221,8 @@ FOR iOS:
 		
 		<!-- Location always -->
 		<key>NSLocationAlwaysUsageDescription</key>
+		<string>My description about why I need this feature in my app</string>
+		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 		<string>My description about why I need this feature in my app</string>
 		
 		<!-- Motion -->
@@ -267,21 +269,27 @@ Embedding the ANE:
 	<extensionID>com.myflashlab.air.extensions.permissionCheck</extensionID>
 	
 	<!-- download the dependency ANEs from https://github.com/myflashlab/common-dependencies-ANE -->
-	<extensionID>com.myflashlab.air.extensions.dependency.androidSupport</extensionID>
 	<extensionID>com.myflashlab.air.extensions.dependency.overrideAir</extensionID>
+	<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.v4</extensionID>
+	<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.core</extensionID>
 	
   </extensions>
 -->
 ```
 
 # Requirements 
-1. iOS SDK 8.0 or higher
-2. Air SDK 24 or higher
+1. iOS 8.0+
+2. AirSDK 30+
+3. Android 15+
+4. The following dependencies
+	* ```<extensionID>com.myflashlab.air.extensions.dependency.overrideAir</extensionID>```
+	* ```<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.v4</extensionID>```
+	* ```<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.core</extensionID>```
 
 # Commercial Version
 http://www.myflashlabs.com/product/native-access-permission-check-settings-menu-air-native-extension/
 
-![Permission Check ANE](http://www.myflashlabs.com/wp-content/uploads/2016/06/product_adobe-air-ane-permission-check-2-595x738.jpg)
+![Permission Check ANE](https://www.myflashlabs.com/wp-content/uploads/2016/06/product_adobe-air-ane-permission-check-2-595x738.jpg)
 
 # Tutorials
 [How to embed ANEs into **FlashBuilder**, **FlashCC** and **FlashDevelop**](https://www.youtube.com/watch?v=Oubsb_3F3ec&list=PL_mmSjScdnxnSDTMYb1iDX4LemhIJrt1O)  
@@ -289,6 +297,53 @@ http://www.myflashlabs.com/product/native-access-permission-check-settings-menu-
 [How to work with Permissions after the release of AIR SDK 24](http://www.myflashlabs.com/adobe-air-app-permissions-android-ios/)
 
 # Changelog
+*Sep 10, 2018 - V3.0.0*
+* remove *androidSupport* and instead add the following dependencies:
+  * ```<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.v4</extensionID>```
+  * ```<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.core</extensionID>```
+* Set ```android:targetSdkVersion``` to at least ``26``` in your AIR manifest file
+* When asking for iOS SOURCE_LOCATION_ALWAYS permission, you must add a new ```key``` to your manifest in adition to the old one:
+```xml
+<!-- Location always -->
+<key>NSLocationAlwaysUsageDescription</key>
+<string>My description about why I need location access always</string>
+
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>My description about why I need location access always</string>
+```
+* On Android side, we have now a new static method, ```PermissionCheck.requestMulti``` which you can pass in multiple permissions in one call if you are asking for multiple permissions one after the other. This feature is NOT supported on iOS though. avoid that on the iOS side or it will throw an error.
+```actionscript
+PermissionCheck.requestMulti(
+    [
+        PermissionCheck.SOURCE_CAMERA,
+        PermissionCheck.SOURCE_MIC
+    ],
+    onRequestMultiResult
+);
+
+function onRequestMultiResult($arr:Array):void
+{
+	for(var i:int=0; i < $arr.length; i++)
+	{
+		trace("permission for " + $arr[i].source + ": " + $arr[i].state);
+	}
+}
+```
+
+* Working with this ANE from now on is static rather than instance initialization. Refer to the sample codes to know how you should update your code to use the static methods rathen than instances.
+* The permission request callback function returns an *Object* rather than the old *int* parameter.
+```actionscript
+// asking for the camera permission
+PermissionCheck.request(PermissionCheck.SOURCE_CAMERA, onRequestResult);
+
+function onRequestResult($obj:Object):void
+{
+    // $obj.source > will be SOURCE_CAMERA in this example
+    // $obj.state > will be either PERMISSION_DENIED, PERMISSION_GRANTED or PERMISSION_OS_ERR
+	trace("permission for " + $obj.source + ": " + $obj.state);
+}
+```
+
 *Dec 15, 2017 - V2.2.2*
 * Optimized for [ANE-LAB software](https://github.com/myflashlab/ANE-LAB).
 

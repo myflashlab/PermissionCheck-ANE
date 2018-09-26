@@ -1,5 +1,52 @@
 Permission Check Air Native Extension
 
+*Sep 10, 2018 - V3.0.0*
+* remove *androidSupport* and instead add the following dependencies:
+  * ```<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.v4</extensionID>```
+  * ```<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.core</extensionID>```
+* Set ```android:targetSdkVersion``` to at least ``26``` in your AIR manifest file
+* When asking for iOS SOURCE_LOCATION_ALWAYS permission, you must add a new ```key``` to your manifest in adition to the old one:
+```xml
+<!-- Location always -->
+<key>NSLocationAlwaysUsageDescription</key>
+<string>My description about why I need location access always</string>
+
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>My description about why I need location access always</string>
+```
+* On Android side, we have now a new static method, ```PermissionCheck.requestMulti``` which you can pass in multiple permissions in one call if you are asking for multiple permissions one after the other. This feature is NOT supported on iOS though. avoid that on the iOS side or it will throw an error.
+```actionscript
+PermissionCheck.requestMulti(
+    [
+        PermissionCheck.SOURCE_CAMERA,
+        PermissionCheck.SOURCE_MIC
+    ],
+    onRequestMultiResult
+);
+
+function onRequestMultiResult($arr:Array):void
+{
+	for(var i:int=0; i < $arr.length; i++)
+	{
+		trace("permission for " + $arr[i].source + ": " + $arr[i].state);
+	}
+}
+```
+
+* Working with this ANE from now on is static rather than instance initialization. Refer to the sample codes to know how you should update your code to use the static methods rathen than instances.
+* The permission request callback function returns an *Object* rather than the old *int* parameter.
+```actionscript
+// asking for the camera permission
+PermissionCheck.request(PermissionCheck.SOURCE_CAMERA, onRequestResult);
+
+function onRequestResult($obj:Object):void
+{
+    // $obj.source > will be SOURCE_CAMERA in this example
+    // $obj.state > will be either PERMISSION_DENIED, PERMISSION_GRANTED or PERMISSION_OS_ERR
+	trace("permission for " + $obj.source + ": " + $obj.state);
+}
+```
+
 *Dec 15, 2017 - V2.2.2*
 * Optimized for [ANE-LAB software](https://github.com/myflashlab/ANE-LAB).
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<application xmlns="http://ns.adobe.com/air/application/27.0">
+<application xmlns="http://ns.adobe.com/air/application/30.0">
     <id>com.doitflash.permissionCheck</id>
-    <versionNumber>2.2.2</versionNumber>
+    <versionNumber>3.0.0</versionNumber>
     <supportedProfiles>mobileDevice</supportedProfiles>
     <filename>expermissionCheck</filename>
     <name>Permission Checker</name>
@@ -9,9 +9,7 @@
         <manifestAdditions><![CDATA[<manifest android:installLocation="auto">
             
             <uses-permission android:name="android.permission.INTERNET" />
-            
-            <!--The new Permission thing on Android works ONLY if you are targetting Android SDK 23 or higher-->
-            <uses-sdk android:targetSdkVersion="23"/>
+            <uses-sdk android:targetSdkVersion="26"/>
             
             <!--
                 Although Permissions are asked at runtime, you still need to mention them in your manifest.
@@ -146,6 +144,8 @@
 		<!-- Location always -->
 		<key>NSLocationAlwaysUsageDescription</key>
 		<string>My description about why I need location access always</string>
+		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+		<string>My description about why I need location access always</string>
         
         ]]></InfoAdditions>
     <requestedDisplayResolution>high</requestedDisplayResolution>
@@ -193,9 +193,10 @@
     
     <extensionID>com.myflashlab.air.extensions.permissionCheck</extensionID>
     
-    <!-- download the dependency ANEs from https://github.com/myflashlab/common-dependencies-ANE -->
-    <extensionID>com.myflashlab.air.extensions.dependency.androidSupport</extensionID>
+    <!-- download dependency ANEs from https://github.com/myflashlab/common-dependencies-ANE -->
     <extensionID>com.myflashlab.air.extensions.dependency.overrideAir</extensionID>
-        
+    <extensionID>com.myflashlab.air.extensions.dependency.androidSupport.v4</extensionID>
+    <extensionID>com.myflashlab.air.extensions.dependency.androidSupport.core</extensionID>
+
 </extensions>
 </application>
