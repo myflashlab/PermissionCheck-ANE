@@ -1,4 +1,4 @@
-# Permission Check ANE V3.0.0 for iOS/Android
+# Permission Check ANE V3.0.1 for iOS/Android
 This AIR Native Extensions lets you check the permission status of different iOS/Android sources like the camera, photos, contacts, calendar, reminders, location, mic and etc. This ANE also allows you to request for a permission if its status is still unknown (on iOS) or denied (on Android).
 
 **NOTE:** If you need other permissions, just leave us a message in the issues section and we will gladly add it to the currently supported permissions.
@@ -297,6 +297,10 @@ http://www.myflashlabs.com/product/native-access-permission-check-settings-menu-
 [How to work with Permissions after the release of AIR SDK 24](http://www.myflashlabs.com/adobe-air-app-permissions-android-ios/)
 
 # Changelog
+*Nov 18, 2018 - V3.0.1*
+* Works with OverrideAir ANE V5.6.1 or higher
+* Works with ANELAB V1.1.26 or higher
+
 *Sep 10, 2018 - V3.0.0*
 * remove *androidSupport* and instead add the following dependencies:
   * ```<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.v4</extensionID>```
