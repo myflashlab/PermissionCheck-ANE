@@ -287,9 +287,9 @@ Embedding the ANE:
 	* ```<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.core</extensionID>```
 
 # Commercial Version
-http://www.myflashlabs.com/product/native-access-permission-check-settings-menu-air-native-extension/
+https://www.myflashlabs.com/product/native-access-permission-check-settings-menu-air-native-extension/
 
-![Permission Check ANE](https://www.myflashlabs.com/wp-content/uploads/2016/06/product_adobe-air-ane-permission-check-2-595x738.jpg)
+[![Permission Check ANE](https://www.myflashlabs.com/wp-content/uploads/2016/06/product_adobe-air-ane-permission-check-2018-595x738.jpg)](https://www.myflashlabs.com/product/native-access-permission-check-settings-menu-air-native-extension/)
 
 # Tutorials
 [How to embed ANEs into **FlashBuilder**, **FlashCC** and **FlashDevelop**](https://www.youtube.com/watch?v=Oubsb_3F3ec&list=PL_mmSjScdnxnSDTMYb1iDX4LemhIJrt1O)  
