@@ -139,15 +139,13 @@ package
 			}
 		}
 		
-		private function myDebuggerDelegate($ane:String, $class:String, $msg:String):void
-		{
-			trace($ane+"("+$class+") "+$msg);
-		}
-		
 		private function onInit():void
 		{
-			// remove this line in production build or pass null as the delegate
-			OverrideAir.enableDebugger(myDebuggerDelegate);
+			// Remove OverrideAir debugger in production builds
+			OverrideAir.enableDebugger(function ($ane:String, $class:String, $msg:String):void
+			{
+				trace($ane+" ("+$class+") "+$msg);
+			});
 			
 			// initialize the ANE
 			PermissionCheck.init();
@@ -176,7 +174,7 @@ package
 				C.log("PermissionCheck.SOURCE_CALENDAR = " + prettify(permissionState));
 				
 				// ----------------------------------------------------------------------- on iOS ONLY
-				if (PermissionCheck.os == PermissionCheck.IOS)
+				if (OverrideAir.os == OverrideAir.IOS)
 				{
 					permissionState = PermissionCheck.check(PermissionCheck.SOURCE_PHOTOS);
 					C.log("PermissionCheck.SOURCE_PHOTOS = " + prettify(permissionState));
@@ -192,7 +190,7 @@ package
 				}
 				
 				// ----------------------------------------------------------------------- on Android ONLY
-				if (PermissionCheck.os == PermissionCheck.ANDROID)
+				if (OverrideAir.os == OverrideAir.ANDROID)
 				{
 					permissionState = PermissionCheck.check(PermissionCheck.SOURCE_PHONE);
 					C.log("PermissionCheck.SOURCE_PHONE = " + prettify(permissionState));
@@ -262,7 +260,7 @@ package
 			}
 			
 			// ----------------------------------------------------------------------- on iOS ONLY
-			if (PermissionCheck.os == PermissionCheck.IOS)
+			if (OverrideAir.os == OverrideAir.IOS)
 			{
 				var btn3:MySprite = createBtn("request PHOTOS");
 				btn3.addEventListener(MouseEvent.CLICK, requestPHOTOS);
@@ -302,7 +300,7 @@ package
 			}
 			
 			// ----------------------------------------------------------------------- on Android ONLY
-			if (PermissionCheck.os == PermissionCheck.ANDROID)
+			if (OverrideAir.os == OverrideAir.ANDROID)
 			{
 				var btn7:MySprite = createBtn("request PHONE");
 				btn7.addEventListener(MouseEvent.CLICK, requestPHONE);

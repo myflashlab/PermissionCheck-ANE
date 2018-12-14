@@ -1,4 +1,4 @@
-# Permission Check ANE V3.0.1 for iOS/Android
+# Permission Check ANE for iOS/Android
 This AIR Native Extensions lets you check the permission status of different iOS/Android sources like the camera, photos, contacts, calendar, reminders, location, mic and etc. This ANE also allows you to request for a permission if its status is still unknown (on iOS) or denied (on Android).
 
 **NOTE:** If you need other permissions, just leave us a message in the issues section and we will gladly add it to the currently supported permissions.
@@ -29,10 +29,7 @@ Here are the list of permissions that this ANE currently supports:
 * SMS
 
 
-# asdoc
-[find the latest asdoc for this ANE here.](http://myflashlab.github.io/asdoc/com/myflashlab/air/extensions/nativePermissions/package-detail.html)  
-
-[Download demo ANE](https://github.com/myflashlab/PermissionCheck-ANE/tree/master/AIR/lib)
+[find the latest **asdoc** for this ANE here.](http://myflashlab.github.io/asdoc/com/myflashlab/air/extensions/nativePermissions/package-detail.html)
 
 # Air Usage
 ```actionscript
@@ -296,84 +293,6 @@ https://www.myflashlabs.com/product/native-access-permission-check-settings-menu
 [Understanding How Permissions Work before the release of AIR 24](http://www.myflashlabs.com/understanding-android-ios-permissions-in-adobe-air-apps/)  
 [How to work with Permissions after the release of AIR SDK 24](http://www.myflashlabs.com/adobe-air-app-permissions-android-ios/)
 
-# Changelog
-*Nov 18, 2018 - V3.0.1*
-* Works with OverrideAir ANE V5.6.1 or higher
-* Works with ANELAB V1.1.26 or higher
-
-*Sep 10, 2018 - V3.0.0*
-* remove *androidSupport* and instead add the following dependencies:
-  * ```<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.v4</extensionID>```
-  * ```<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.core</extensionID>```
-* Set ```android:targetSdkVersion``` to at least ``26``` in your AIR manifest file
-* When asking for iOS SOURCE_LOCATION_ALWAYS permission, you must add a new ```key``` to your manifest in adition to the old one:
-```xml
-<!-- Location always -->
-<key>NSLocationAlwaysUsageDescription</key>
-<string>My description about why I need location access always</string>
-
-<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-<string>My description about why I need location access always</string>
-```
-* On Android side, we have now a new static method, ```PermissionCheck.requestMulti``` which you can pass in multiple permissions in one call if you are asking for multiple permissions one after the other. This feature is NOT supported on iOS though. avoid that on the iOS side or it will throw an error.
-```actionscript
-PermissionCheck.requestMulti(
-    [
-        PermissionCheck.SOURCE_CAMERA,
-        PermissionCheck.SOURCE_MIC
-    ],
-    onRequestMultiResult
-);
-
-function onRequestMultiResult($arr:Array):void
-{
-	for(var i:int=0; i < $arr.length; i++)
-	{
-		trace("permission for " + $arr[i].source + ": " + $arr[i].state);
-	}
-}
-```
-
-* Working with this ANE from now on is static rather than instance initialization. Refer to the sample codes to know how you should update your code to use the static methods rathen than instances.
-* The permission request callback function returns an *Object* rather than the old *int* parameter.
-```actionscript
-// asking for the camera permission
-PermissionCheck.request(PermissionCheck.SOURCE_CAMERA, onRequestResult);
-
-function onRequestResult($obj:Object):void
-{
-    // $obj.source > will be SOURCE_CAMERA in this example
-    // $obj.state > will be either PERMISSION_DENIED, PERMISSION_GRANTED or PERMISSION_OS_ERR
-	trace("permission for " + $obj.source + ": " + $obj.state);
-}
-```
-
-*Dec 15, 2017 - V2.2.2*
-* Optimized for [ANE-LAB software](https://github.com/myflashlab/ANE-LAB).
-
-*Aug 14, 2017 - V2.2.0*
-* ```SOURCE_LOCATION_WHEN_IN_USE``` and ```SOURCE_LOCATION_ALWAYS``` for iOS are now also supported by the ANE. Do not confuse them with ```SOURCE_LOCATION``` which works on Android only.
-* Sample intelliJ project added to GitHub.
-
-*Mar 27, 2016 - V2.1.0*
-* Updated the ANE with the latest OverrideAir ANE. This dependency is required on iOS builds also.
-
-
-*Nov 03, 2016 - V2.0.2*
-* Fixed a bug on Android when requesting permissions quickly one after the other
-* Fixed a bug on Android when requesting for permission groups. In this fix, you can call any of the permissions in a group and a correct dialog will open
-
-*Nov 02, 2016 - V2.0.1*
-* Fixed a bug on Android when requesting for a permission in the project constructor function was returning a wrong value.
-
-*Oct 29, 2016 - V2.0.0*
-* Added Android support
-* AIR 24+ is required to compile the ANE
-* Set -swf-version=35 in compiler options
-* Set ```android:targetSdkVersion``` to at least ``23``` in your AIR manifest file
-
-*Sep 18, 2016 - V1.0.1*
-* Fixed iOS 7 hard crash
-
-*Jun 08, 2016 - V1.0.0*
-* beginning of the journey!
+# Premium Support #
+[![Premium Support package](https://www.myflashlabs.com/wp-content/uploads/2016/06/professional-support.jpg)](https://www.myflashlabs.com/product/myflashlabs-support/)
+If you are an [active MyFlashLabs club member](https://www.myflashlabs.com/product/myflashlabs-club-membership/), you will have access to our private and secure support ticket system for all our ANEs. Even if you are not a member, you can still receive premium help if you purchase the [premium support package](https://www.myflashlabs.com/product/myflashlabs-support/).
