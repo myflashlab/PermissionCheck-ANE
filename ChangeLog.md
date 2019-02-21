@@ -1,5 +1,8 @@
 Permission Check Air Native Extension
 
+*Feb 21, 2019 - V3.1.0*
+* Added method ```PermissionCheck.shouldShowRequest("permissionSource")```. This method works on Android side only.
+
 *Nov 18, 2018 - V3.0.1*
 * Works with OverrideAir ANE V5.6.1 or higher
 * Works with ANELAB V1.1.26 or higher
