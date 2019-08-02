@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<application xmlns="http://ns.adobe.com/air/application/31.0">
+<application xmlns="http://ns.adobe.com/air/application/32.0">
     <id>com.doitflash.permissionCheck</id>
-    <versionNumber>3.0.1</versionNumber>
+    <versionNumber>3.1.1</versionNumber>
     <supportedProfiles>mobileDevice</supportedProfiles>
     <filename>expermissionCheck</filename>
     <name>Permission Checker</name>
@@ -9,7 +9,7 @@
         <manifestAdditions><![CDATA[<manifest android:installLocation="auto">
             
             <uses-permission android:name="android.permission.INTERNET" />
-            <uses-sdk android:targetSdkVersion="26"/>
+            <uses-sdk android:targetSdkVersion="28"/>
             
             <!--
                 Although Permissions are asked at runtime, you still need to mention them in your manifest.
@@ -84,9 +84,9 @@
          
          <InfoAdditions><![CDATA[
          
-         <!--iOS 8.0 or higher can support this ANE-->
+         <!--iOS 10.0 or higher can support this ANE-->
         <key>MinimumOSVersion</key>
-        <string>8.0</string>
+        <string>10.0</string>
         
         <key>UIPrerenderedIcon</key>
         <true/>
@@ -104,9 +104,9 @@
         </array>
         
         <!--
-         A new feature for iOS 10 submissions requires you to add the 'purpose string' to your app
-         when accessing a user's private data such as Camera or Photos. For information about providing
-         keys in your app descriptor file, see https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html
+         iOS submissions requires you to add the 'purpose string' to your app when accessing a user's private data
+         such as Camera or Photos. For information about providing keys in your app descriptor file, see
+         https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html
          
          To save your time, we have added the required key/values below for your reference:
          

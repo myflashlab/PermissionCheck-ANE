@@ -1,5 +1,10 @@
 Permission Check Air Native Extension
 
+*Aug 2, 2019 - V3.1.1*
+* Added Android 64-bit support
+* Supports iOS 10+
+* Removed **PermissionCheck.os** property, use ```OverrideAir.os``` instead.
+
 *Feb 21, 2019 - V3.1.0*
 * Added method ```PermissionCheck.shouldShowRequest("permissionSource")```. This method works on Android side only.
 

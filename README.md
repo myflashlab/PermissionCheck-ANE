@@ -106,8 +106,6 @@ private function onRequestResult($obj:Object):void
 FOR Android:
 -->
 
-<uses-sdk android:targetSdkVersion="26"/>
-
 	<!--
 		Although Permissions are asked at runtime, you still need to mention them in your manifest.
 		
@@ -170,9 +168,9 @@ FOR iOS:
 -->
 	<InfoAdditions>
 	
-		<!--iOS 8.0 or higher can support this ANE-->
+		<!--iOS 10.0 or higher can support this ANE-->
 		<key>MinimumOSVersion</key>
-		<string>8.0</string>
+		<string>10.0</string>
 		
 		<!--
 			In iOS 10+ submissions require you to add the 'purpose string' to your app 
@@ -275,9 +273,9 @@ Embedding the ANE:
 ```
 
 # Requirements 
-1. iOS 8.0+
+1. iOS 10.0+
 2. AirSDK 30+
-3. Android 15+
+3. Android 19+
 4. The following dependencies
 	* ```<extensionID>com.myflashlab.air.extensions.dependency.overrideAir</extensionID>```
 	* ```<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.v4</extensionID>```
