@@ -87,6 +87,9 @@
          <!--iOS 10.0 or higher can support this ANE-->
         <key>MinimumOSVersion</key>
         <string>10.0</string>
+
+        <key>UILaunchStoryboardName</key>
+		<string>LaunchScreen</string>
         
         <key>UIPrerenderedIcon</key>
         <true/>

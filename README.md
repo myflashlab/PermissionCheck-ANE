@@ -265,8 +265,7 @@ Embedding the ANE:
 	
 	<!-- download the dependency ANEs from https://github.com/myflashlab/common-dependencies-ANE -->
 	<extensionID>com.myflashlab.air.extensions.dependency.overrideAir</extensionID>
-	<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.v4</extensionID>
-	<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.core</extensionID>
+	<extensionID>com.myflashlab.air.extensions.dependency.androidx.core</extensionID>
 	
   </extensions>
 -->
@@ -274,12 +273,11 @@ Embedding the ANE:
 
 # Requirements 
 1. iOS 10.0+
-2. AirSDK 30+
+2. AirSDK 33+
 3. Android 19+
 4. The following dependencies
 	* ```<extensionID>com.myflashlab.air.extensions.dependency.overrideAir</extensionID>```
-	* ```<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.v4</extensionID>```
-	* ```<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.core</extensionID>```
+	* ```<extensionID>com.myflashlab.air.extensions.dependency.androidx.core</extensionID>```
 
 # Commercial Version
 https://www.myflashlabs.com/product/native-access-permission-check-settings-menu-air-native-extension/
