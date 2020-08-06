@@ -1,4 +1,8 @@
-Permission Check Air Native Extension
+# Permission Check Air Native Extension
+
+*Jul 30, 2020 - v5.0.0*
+- Upgrade dependencies to the latest versions.
+- Fixed some minor issues and refactor native codes.
 
 *Apr 05, 2020 - V4.0.1*
 - Add androidx dependencies instead of android support libraries
